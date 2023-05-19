@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { DepartmentsService } from './departments.service';
 import { DepartmentsController } from './departments.controller';
-import { MongooseModule } from '@nestjs/mongoose';
 import { Departments, DepartmentSchema } from './entities/departments.entity';
 
 @Module({

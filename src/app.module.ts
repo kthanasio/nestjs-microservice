@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RouterModule } from 'nest-router';
-import { routes } from './routes';
-import { CompanyModule } from './company/company.module';
 
 import {
   KeycloakConnectModule,
@@ -14,9 +12,12 @@ import {
 } from 'nest-keycloak-connect';
 import { AppController } from 'app.controller';
 import { ConfigModule } from '@nestjs/config';
-import { ProductLeadsModule } from './product-leads/product-leads.module';
 import { DepartmentsModule } from 'departments/departments.module';
 import { ApplicationsModule } from 'applications/applications.module';
+import { ProductLeadsModule } from './product-leads/product-leads.module';
+import { CompanyModule } from './company/company.module';
+import { routes } from './routes';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,9 +36,9 @@ import { ApplicationsModule } from 'applications/applications.module';
     KeycloakConnectModule.registerAsync({
       useFactory: async () => ({
         authServerUrl: JSON.parse(process.env.KEYCLOAK_JSON)['auth-server-url'],
-        realm: JSON.parse(process.env.KEYCLOAK_JSON)['realm'],
-        clientId: JSON.parse(process.env.KEYCLOAK_JSON)['resource'],
-        secret: JSON.parse(process.env.KEYCLOAK_JSON)['credentials']['secret'],
+        realm: JSON.parse(process.env.KEYCLOAK_JSON).realm,
+        clientId: JSON.parse(process.env.KEYCLOAK_JSON).resource,
+        secret: JSON.parse(process.env.KEYCLOAK_JSON).credentials.secret,
         cookieKey: 'KEYCLOAK_JWT',
         tokenValidation: TokenValidation.ONLINE,
         logLevels: ['debug'],

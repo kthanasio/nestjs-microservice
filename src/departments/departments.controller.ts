@@ -8,11 +8,11 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Public, Resource, Roles } from 'nest-keycloak-connect';
 import { DepartmentsService } from './departments.service';
 import { CreateDepartmentsDto } from './dto/create-department.dto';
 import { UpdateDepartmentsDto } from './dto/update-departments.dto';
-import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { Public, Resource, Roles } from 'nest-keycloak-connect';
 
 @Controller('')
 @ApiTags('Departments')
@@ -39,9 +39,8 @@ export class DepartmentsController {
   async findAll(@Query('name') name?: string) {
     if (name) {
       return await this.departmentService.findByName(name);
-    } else {
-      return await this.departmentService.findAll();
     }
+    return await this.departmentService.findAll();
   }
 
   @Get('/public/departments')

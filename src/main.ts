@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { CompanyModule } from './company/company.module';
-import { swaggerConfig } from './swaggerConfig';
 import { ProductLeadsModule } from 'product-leads/product-leads.module';
 import { DepartmentsModule } from 'departments/departments.module';
 import { ApplicationsModule } from 'applications/applications.module';
+import { swaggerConfig } from './swaggerConfig';
+import { CompanyModule } from './company/company.module';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

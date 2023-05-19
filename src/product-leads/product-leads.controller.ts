@@ -8,11 +8,11 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Public, Resource, Roles } from 'nest-keycloak-connect';
 import { ProductLeadsService } from './product-leads.service';
 import { CreateProductLeadDto } from './dto/create-product-lead.dto';
 import { UpdateProductLeadDto } from './dto/update-product-lead.dto';
-import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { Public, Resource, Roles } from 'nest-keycloak-connect';
 
 @Controller('')
 @ApiTags('Product Leads')
@@ -39,9 +39,8 @@ export class ProductLeadsController {
   async findAll(@Query('name') name?: string) {
     if (name) {
       return await this.productLeadsService.findByName(name);
-    } else {
-      return await this.productLeadsService.findAll();
     }
+    return await this.productLeadsService.findAll();
   }
 
   @Get('/public/product-leads')

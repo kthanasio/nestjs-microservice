@@ -8,11 +8,11 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Resource, Roles } from 'nest-keycloak-connect';
 import { ApplicationService } from './applications.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { UpdateApplicationDto } from './dto/update-application.dto';
-import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { Resource, Roles } from 'nest-keycloak-connect';
 
 @Controller('applications')
 @ApiTags('Applications')
@@ -39,9 +39,8 @@ export class ApplicationController {
   async findAll(@Query('name') name?: string) {
     if (name) {
       return await this.service.findByName(name);
-    } else {
-      return await this.service.findAll();
     }
+    return await this.service.findAll();
   }
 
   @ApiBearerAuth()

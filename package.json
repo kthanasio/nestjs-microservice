@@ -14,9 +14,9 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-	"test": "jest",
-	"test:watch": "jest --watch",
-	"test:coverage": "jest --coverage"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@nestjs/common": "^9.4.0",
@@ -30,15 +30,11 @@
     "class-validator": "^0.14.0",
     "jwt-decode": "^3.1.2",
     "keycloak-connect": "^20.0.5",
-    "mongodb": "^3.6.6",
-    "mongoose": "^5.13.17",
-    "mongoose-history": "^0.8.0",
-    "mongoose-history-plugin": "^3.0.1",
+    "mongoose": "^7.1.2",
     "nest-keycloak-connect": "^1.9.1",
     "nest-router": "^1.0.9",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6",
     "swagger-ui-express": "^4.1.6",
     "uuid": "^8.3.2"
   },
@@ -49,7 +45,6 @@
     "@nestjs/testing": "^9.4.0",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
-    "@types/mongodb": "^3.6.12",
     "@types/node": "^14.14.31",
     "@types/supertest": "^2.0.10",
     "@types/uuid": "^8.3.0",

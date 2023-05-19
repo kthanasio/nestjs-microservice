@@ -22,13 +22,14 @@ export class Applications extends Document {
     default: (_) => uuidv4(),
     required: true,
   })
-  _id: string;
+    _id: string;
+
   /**
    * Application Name
    * @example 'Oracle Retail'
    */
   @Prop({ unique: true, required: true, index: true })
-  name: string;
+    name: string;
 
   /**
    * Application Roadmap
@@ -37,7 +38,7 @@ export class Applications extends Document {
    * @example '0'
    */
   @Prop({ required: true })
-  status: string;
+    status: string;
 
   @Prop({
     type: String,
@@ -45,7 +46,7 @@ export class Applications extends Document {
     required: true,
   })
   @Type(() => ProductLead)
-  productLead: ProductLead;
+    productLead: ProductLead;
 
   @Prop({
     type: String,
@@ -53,7 +54,7 @@ export class Applications extends Document {
     required: true,
   })
   @Type(() => Departments)
-  department: Departments;
+    department: Departments;
 
   @Prop({
     type: [
@@ -65,14 +66,14 @@ export class Applications extends Document {
     ],
   })
   @Type(() => Company)
-  companies: Company[];
+    companies: Company[];
 
   @Prop({
     type: String,
     required: true,
     enum: ['TOOLS', 'PARTNERS', 'PRODUCT'],
   })
-  applicationType: string;
+    applicationType: string;
 }
 
 export const ApplicationSchema = SchemaFactory.createForClass(Applications);

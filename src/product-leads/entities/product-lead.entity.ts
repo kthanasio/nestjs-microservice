@@ -18,21 +18,21 @@ export class ProductLead extends Document {
     default: (_) => uuidv4(),
     required: true,
   })
-  _id: string;
+    _id: string;
 
   /**
    * Product Lead Email
    * @example 'pl@mail.com'
    */
   @Prop({ unique: true, required: true })
-  email: string;
+    email: string;
 
   /**
    * Product Lead Name
    * @example 'Product Lead'
    */
   @Prop({ unique: true, required: true })
-  name: string;
+    name: string;
 
   /**
    * Product Lead Status
@@ -41,7 +41,7 @@ export class ProductLead extends Document {
    * @example '1'
    */
   @Prop({ required: true })
-  status: string;
+    status: string;
 }
 
 export const ProductLeadSchema = SchemaFactory.createForClass(ProductLead);

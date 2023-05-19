@@ -1,4 +1,6 @@
-import { HttpException, HttpStatus, Injectable, Scope } from '@nestjs/common';
+import {
+  HttpException, HttpStatus, Injectable, Scope,
+} from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateProductLeadDto } from './dto/create-product-lead.dto';

@@ -6,7 +6,7 @@ export class CreateCompanyDto {
    * @example 'Company Name'
    */
   @IsNotEmpty()
-  name: string;
+    name: string;
 
   /**
    * Company Status
@@ -15,5 +15,5 @@ export class CreateCompanyDto {
    * @example '1'
    */
   @IsNotEmpty()
-  status = '1';
+    status = '1';
 }

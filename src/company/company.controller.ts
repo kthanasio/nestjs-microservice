@@ -40,9 +40,8 @@ export class CompanyController {
   async findAll(@Query('name') name?: string) {
     if (name) {
       return await this.companyService.findByName(name);
-    } else {
-      return await this.companyService.findAll();
     }
+    return await this.companyService.findAll();
   }
 
   @Get('/public/companies')

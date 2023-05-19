@@ -10,7 +10,8 @@ export class CreateApplicationDto {
    * @example 'Oracle Retail'
    */
   @IsNotEmpty()
-  name: string;
+    name: string;
+
   /**
    * Application Roadmap
    * 0 - Desativar
@@ -18,19 +19,19 @@ export class CreateApplicationDto {
    * @example '0'
    */
   @IsNotEmpty()
-  status = '1';
+    status = '1';
 
   @IsNotEmpty({ each: true })
-  productLead: ProductLead;
+    productLead: ProductLead;
 
   @IsNotEmpty()
-  department: Departments;
+    department: Departments;
 
   @IsNotEmpty()
   @IsArray()
-  companies: Company[];
+    companies: Company[];
 
   @IsNotEmpty()
   @ApiProperty({ enum: ['TOOLS', 'PARTNERS', 'PRODUCT'] })
-  applicationType: string;
+    applicationType: string;
 }

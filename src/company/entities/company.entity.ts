@@ -18,13 +18,16 @@ export class Company extends Document {
     default: (_) => uuidv4(),
     required: true,
   })
-  _id: string;
+    _id: string;
+
   /**
    * Company name
    * @example 'Company Name'
    */
-  @Prop({ type: String, unique: true, required: true, index: true })
-  name: string;
+  @Prop({
+    type: String, unique: true, required: true, index: true,
+  })
+    name: string;
 
   /**
    * Company Status
@@ -33,7 +36,7 @@ export class Company extends Document {
    * @example '1'
    */
   @Prop({ required: true })
-  status: string;
+    status: string;
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company);

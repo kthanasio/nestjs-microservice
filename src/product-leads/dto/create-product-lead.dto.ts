@@ -7,13 +7,15 @@ export class CreateProductLeadDto {
    */
   @IsNotEmpty()
   @IsEmail()
-  email: string;
+    email: string;
+
   /**
    * Product Lead Name
    * @example 'Product Lead'
    */
   @IsNotEmpty()
-  name: string;
+    name: string;
+
   /**
    * Product Lead Status
    * 1 - Active
@@ -21,5 +23,5 @@ export class CreateProductLeadDto {
    * @example '1'
    */
   @IsNotEmpty()
-  status = '1';
+    status = '1';
 }

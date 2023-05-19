@@ -18,14 +18,14 @@ export class Departments extends Document {
     default: (_) => uuidv4(),
     required: true,
   })
-  _id: string;
+    _id: string;
 
   /**
    * Department Name
    * @example 'Technology'
    */
   @Prop({ unique: true, required: true })
-  name: string;
+    name: string;
 
   /**
    * Department Status
@@ -34,7 +34,7 @@ export class Departments extends Document {
    * @example '1'
    */
   @Prop({ required: true })
-  status: string;
+    status: string;
 }
 
 export const DepartmentSchema = SchemaFactory.createForClass(Departments);

@@ -6,7 +6,8 @@ export class CreateDepartmentsDto {
    * @example 'Technology'
    */
   @IsNotEmpty()
-  name: string;
+    name: string;
+
   /**
    * Department Status
    * 1 - Active
@@ -14,5 +15,5 @@ export class CreateDepartmentsDto {
    * @example '1'
    */
   @IsNotEmpty()
-  status = '1';
+    status = '1';
 }

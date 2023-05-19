@@ -1,4 +1,6 @@
-import { HttpException, HttpStatus, Injectable, Scope } from '@nestjs/common';
+import {
+  HttpException, HttpStatus, Injectable, Scope,
+} from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateApplicationDto } from './dto/create-application.dto';
@@ -20,11 +22,12 @@ export class ApplicationService {
   ): Promise<Applications> {
     try {
       const company = new this.model(createApplicationDto);
-      await company
-        .populate('productLead', 'name email _id')
-        .populate('department', 'name _id')
-        .populate('companies', 'name _id')
-        .execPopulate();
+
+    //   await company
+    //     .populate('productLead', 'name email _id')
+    //     .populate('department', 'name _id')
+    //     .populate('companies', 'name _id')
+    //     .execPopulate();
       return await company.save();
     } catch (error: any) {
       if (error.code == '11000') {
