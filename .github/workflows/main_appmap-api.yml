@@ -24,7 +24,7 @@ jobs:
             CI=false npm run build --if-present
 
         - name: Zip all files for upload between jobs
-          run: zip --symlinks -r nest.zip ./dist/*
+          run: zip --symlinks -r nest.zip ./dist/* ./node_modules/*
                 
         - name: Upload artifact for deployment job
           uses: actions/upload-artifact@v2
