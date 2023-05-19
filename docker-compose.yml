@@ -1,0 +1,85 @@
+version: '3.3'
+services:
+  web:
+    container_name: applicationmap.app.admin
+    image: applicationmap.app.admin
+    ports:
+      - 3000:80
+    depends_on:
+      - api
+    restart: always
+    networks:
+      - applicationmap_network
+  api:
+    container_name: applicationmap.api.admin
+    image: applicationmap.api.admin
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run start:dev
+    ports:
+      - 3002:3002
+    depends_on:
+      # - mongodb
+      - applicationmap_keycloak
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - applicationmap_network
+  # mongodb:
+  #   image : mongo:latest
+  #   container_name: applicationmap-mongodb
+  #   volumes:
+  #     - ./database:/data/db
+  #   ports:
+  #     - 27018:27017
+  #   restart: always
+  #   networks:
+  #     - applicationmap_network
+  applicationmap_keycloak_postgresql:
+    image: postgres
+    container_name: applicationmap_keycloak_postgresql
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: "admin"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - applicationmap_keycloak_postgresql_data:/var/lib/postgresql/data
+    networks:
+      - applicationmap_network
+  applicationmap_keycloak:
+    container_name: applicationmap_keycloak
+    image: quay.io/keycloak/keycloak:latest
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: applicationmap_keycloak_postgresql
+      DB_DATABASE: "keycloak"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_SCHEMA: public
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "admin"
+      JAVA_OPTS: "-Dkeycloak.profile=preview -Dkeycloak.profile.feature.token_exchange=enabled -Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.upload_scripts=enabled"
+    command: start-dev
+    volumes:
+      - applicationmap_keycloak_data:/opt/jboss/keycloak/
+    networks:
+      - applicationmap_network
+    depends_on:
+      - applicationmap_keycloak_postgresql
+networks:
+  applicationmap_network:
+    driver: bridge
+volumes:
+  applicationmap_keycloak_postgresql_data:
+    driver: local
+  applicationmap_keycloak_data:
+    driver: local
