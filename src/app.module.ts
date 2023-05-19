@@ -24,11 +24,9 @@ import { routes } from './routes';
       isGlobal: true,
     }),
     MongooseModule.forRoot(
-      `mongodb+srv://${process.env.MONGO_DB_HOST}/${process.env.MONGO_DB_DATABASE}`,
+      `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOST}/${process.env.MONGO_DB_DATABASE}`,
       {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: true,
+		useNewUrlParser: true,
         useUnifiedTopology: true,
       },
     ),
