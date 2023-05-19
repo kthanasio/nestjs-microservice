@@ -21,7 +21,7 @@ export const swaggerConfig = async function conf(
       'https://github.com/kthanasio',
       'klebermt@gmail.com',
     )
-    .addServer(`http://localhost:${process.env.APPLICATION_PORT}`)
+    .addServer(`https://appmap-api.azurewebsites.net`)
     .addBearerAuth()
     .build();
 
