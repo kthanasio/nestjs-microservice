@@ -3,7 +3,7 @@ name: Build and deploy Node.js app to Azure Web App - sampleapp
 on:
     push:
         branches:
-        - master
+        - main
     workflow_dispatch:
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
         needs: build
         environment:
           name: 'Production'
-          url: $
+          url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
         steps:
         - name: Download artifact from build job
@@ -51,7 +51,7 @@ jobs:
           with:
             app-name: 'appmap-api'
             slot-name: 'Production'
-            publish-profile: $
+            publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4696E1B2DD747C580BB699A48542207 }}
             package: nest.zip
 
         - name: Delete zip file
