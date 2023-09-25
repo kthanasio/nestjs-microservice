@@ -26,7 +26,7 @@ import { routes } from './routes';
     MongooseModule.forRoot(
       `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOST}/${process.env.MONGO_DB_DATABASE}`,
       {
-		useNewUrlParser: true,
+        useNewUrlParser: true,
         useUnifiedTopology: true,
       },
     ),
@@ -39,7 +39,7 @@ import { routes } from './routes';
         secret: JSON.parse(process.env.KEYCLOAK_JSON).credentials.secret,
         cookieKey: 'KEYCLOAK_JWT',
         tokenValidation: TokenValidation.ONLINE,
-        logLevels: ['debug'],
+        logLevels: ['error'],
         useNestLogger: true,
       }),
     }),
